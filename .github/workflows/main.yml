@@ -20,7 +20,7 @@ jobs:
       - run: ls -al ./
       - run: ls -al ../
       - run: pandoc  --standalone  --self-contained  --embed-resources --from markdown --output=BancroftRobodogsNotebook.pdf README.md
-      - run: pdflatex -jobname=keywordsList-${{  github.ref_name }}.pdf keywordsList.tex
+      - run: pdflatex -jobname=keywordsList-${{  github.ref_name }} keywordsList.tex
       - run: ls -al .
       - name: release
         uses: actions/create-release@v1
