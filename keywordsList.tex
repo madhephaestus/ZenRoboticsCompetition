@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{enumitem,amssymb}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\begin{document}
+My ToDo list
+
+\begin{itemize}
+  \item Immediate plan of action.
+
+  \begin{todolist}
+    \item List item 1 goes here.
+    \item List item 2 goes here.
+    \begin{todolist}
+      \item Sublist item 1 goes here.
+      \item Sublist item 2 goes here.
+    \end{todolist}
+    \item List item 3 goes here
+    \item List item 4 goes here.
+  \end{todolist}
+
+\end{itemize}
+\end{document}
