@@ -12,7 +12,9 @@ jobs:
       - name: Checkout repository and submodules
         uses: actions/checkout@v2
         with:
-            submodules: recursive 
+            submodules: recursive
+      - run: sudo add-apt-repository -y ppa:sunderme/texstudio
+
       - run: sudo apt install texlive-latex-extra
       - run: echo $PWD
       - run: ls -al ./
