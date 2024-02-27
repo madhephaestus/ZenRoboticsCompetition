@@ -1,8 +1,17 @@
 \documentclass{article}
 \usepackage{enumitem,amssymb}
+\usepackage{lipsum} % for filler text
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
 \newlist{todolist}{itemize}{2}
 \setlist[todolist]{label=$\square$}
 \usepackage{easylist}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE,RO]{\thepage}           % page number in "outer" position of footer line
+\fancyfoot[RE,LO]{Version VERSIONNUMBER} % other info in "inner" position of footer line
+
+
 \begin{document}
 	
 {\huge \textbf{Zen Robotics Pentatholon}}
