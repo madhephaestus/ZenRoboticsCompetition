@@ -19,6 +19,7 @@ jobs:
       - run: echo $PWD
       - run: ls -al ./
       - run: ls -al ../
+      - run: sed -i 's/VERSIONNUMBER/${{  github.ref_name }}/g' ZenCompetition.tex
       - run: pdflatex -jobname=ZenCompetition-${{  github.ref_name }} ZenCompetition.tex
       - run: ls -al .
       - name: release
