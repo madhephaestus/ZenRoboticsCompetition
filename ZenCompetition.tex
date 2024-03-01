@@ -26,7 +26,7 @@
 
 The purpose of this Pentatholon is to encourage students to become good engineers. A good engineer is defined as someone who builds systems that accomplish tasks with accessible designs, give and receive aid among peers, and competes to push forward the edge of the known possible. In short, we intend to inject hope into the world through inspiring feats of engineering.
 
-Accessible designs means that the designs, tools and components are accessible to all competitors, and non competitors equally. Designs and code should be housed in public facing VCS system. Tools should be free and open source to all people. The intent is to prevent enclosure of students skills by companies.  Components should be generic commodity components or be manufactured with open licenses for multi-vendor sourcing.  
+Accessible designs means that the designs, tools and components are accessible to all competitors, and non competitors equally. Designs and code should be housed in public facing Git repository. Tools should be free and open source to all people. The intent is to prevent enclosure of students skills by companies.  Components should be generic commodity components or be manufactured with open licenses for multi-vendor sourcing.  
 
 To give and receive aid means that you use the tools and sources of others and assume that the tools and code you create will be used by others. This means being a responsible user of open source code. You should also be a responsible creator of open source code and documentation. The aid you receive, and the aid you give, should be  balanced. 
 
@@ -156,9 +156,9 @@ Tool attribution is a separate document in the top level of the students submiss
 
 In the root of the students submission must be a BoM file that contains each and every vitamin used in the robot. The BoM must have the reference location of that vitamin in the approved vitamins list (Type and Size), its location within the robot, and unique name. No vitamins may be used unless they are in the approved vitamins list. Competitors may submit requests to add new vitamins via a Pull Request to the approved vitamins list with dual sourcing information, sizes and a parametric model in the BowlerStudio format. 
 
-Each student, and their associated contributions, are associated to one and only one email address. This email address identifies the student with their contributions. It is very important that the VCS systems involved are configured to use the students email for each commit. 
+Each student, and their associated contributions, are associated to one and only one email address. This email address identifies the student with their contributions. It is very important that the Git Repository involved are configured to use the students email for each commit. 
 
-All submissions from a student registered on a team apply to the entire team. If a team works collaboratively on contributions, but has a single "author" in the VCS, that is OK. Awards and contributions are applied to whole teams. 
+All submissions from a student registered on a team apply to the entire team. If a team works collaboratively on contributions, but has a single "author" in the Git Repository, that is OK. Awards and contributions are applied to whole teams. 
 
 All teams that compete in the code portion must have at least one hardware submission. Multiple code teams may use a single hardware entry. A code entry may be used on more than one hardware entry. 
 
@@ -168,7 +168,7 @@ Performance only teams may compete so long as the animations and costume can be 
 
 All teams that wish to compete for top prizes must compete over the competition weekend. All robots source must be posted and tagged by the provided time, on the day before competition. 
 
-Competition consists of the judges running the tagged code against the student provided robot, connected to the judges station's network. The judge will run the tagged code in a standard execution environment. Students code must work as a self contained system, or bootstrap components as they are needed. Judges station will have access to the internet during practice run to ensure bootstrapping. Student downloads are limited to 8gb of total used disk space. The student provided software will have a competition.groovy file that will perform then entire task of animation, course navigation and stopping at the end to press the button. Animation audio will play through the station computer. 
+Competition consists of the judges running the tagged code against the student provided robot, connected to the judges station's network. The judge will run the tagged code in a standard execution environment. Students code must work as a self contained system, or bootstrap components as they are needed. Judges station will have access to the internet during practice run to ensure bootstrapping. Student downloads are limited to 8gb of total used disk space. The student provided software will have a competition.sh file that will perform then entire task of animation, course navigation and stopping at the end to press the button. Animation audio will play through the station computer. 
 
 Each team in the competition must perform some portion of the obstacle course to be counted for judging. All runs of the course are recorded for the instant runoff judging. Judging for objective measures such ad distance and time will be judged instantly. Performance and design contribution judging will be performed over the following weeks. Finalists will be invited to submit a new animation for second round judging at a central event. The finalists will be judged and awarded at that time. 
 
@@ -178,7 +178,7 @@ Each team in the competition must perform some portion of the obstacle course to
 
 {\huge \textbf{Software}}
 
-\textbf{Competition Runtime:} The competition runtime is BowlerStudio. Student code will consist of a BowlerStudio launcher script that performs the entire course without further human interaction. The competition runtime computer will be Ubuntu LTS on x86\_64 processor with 32gb of ram. The competition station will be connected to a WiFi station. The robot will be connected to the same WiFi station.  
+\textbf{Competition Runtime:} The competition runtime is a Linux computer. Student code will consist of a launcher script that performs the entire course without further human interaction. The competition runtime computer will be Ubuntu LTS on x86\_64 processor with 32gb of ram. The competition station will be connected to a WiFi station. The robot will be connected to the same WiFi station.  
 
 \textbf{Libraries:} Code and design libraries can be kept as BowlerStudio Groovy scripts, or they my be distributed on Maven. Teams are expected to provide authorship of all libraries used within a submission. 
 
