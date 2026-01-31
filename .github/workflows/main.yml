@@ -14,13 +14,47 @@ jobs:
         with:
             submodules: recursive
       - run: sudo add-apt-repository -y ppa:sunderme/texstudio
-
-      - run: sudo apt install texlive-latex-extra
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v4
+        with:
+            submodules: recursive
+            
+      - name: Check if release exists
+        id: check_release
+        run: |
+          if gh release view ${{ github.ref_name }} > /dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Release for tag ${{ github.ref_name }} already exists - will update it"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Release for tag ${{ github.ref_name }} does not exist - will create it"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            
+      - name: Install LaTeX dependencies
+        run: |
+          sudo add-apt-repository -y ppa:sunderme/texstudio
+          sudo apt install texlive-latex-extra bookletimposer
+          
+      - name: Debug - Show current directory
+        run: |
+          echo $PWD
+          ls -al ./
+          ls -al ../
+          
+      - name: Replace version in LaTeX file
+        run: sed -i 's/VERSIONNUMBER/${{ github.ref_name }}/g' ZenCompetition.tex
+        
+        
       - run: echo $PWD
       - run: ls -al ./
       - run: ls -al ../
       - run: sed -i 's/VERSIONNUMBER/${{  github.ref_name }}/g' ZenCompetition.tex
       - run: pdflatex -jobname=ZenCompetition-${{  github.ref_name }} ZenCompetition.tex
+      - name: Generate Booklet PDF
+        run: bookletimposer -b -a -f "Letter" -p "2x1"  -o  ZenCompetition-${{ github.ref_name }}-booklet.pdf ZenCompetition-${{ github.ref_name }}.pdf      
+              
       - run: ls -al .
       - name: release
         uses: actions/create-release@v1
@@ -34,12 +68,13 @@ jobs:
               GITHUB_TOKEN: ${{ github.token }}
               
 
-      - name: Upload Keywords
-        uses: actions/upload-release-asset@v1
-        env:
-              GITHUB_TOKEN: ${{ github.token }}
+      - name: Create or Update Release
+        uses: softprops/action-gh-release@v1
         with:
-              upload_url: ${{ steps.create_release.outputs.upload_url }}
-              asset_path: ZenCompetition-${{  github.ref_name }}.pdf
-              asset_name: ZenCompetition-${{  github.ref_name }}.pdf
-              asset_content_type: application/binary
+          files: ZenCompetition-${{ github.ref_name }}.pdf,ZenCompetition-${{ github.ref_name }}-booklet.pdf
+          draft: false
+          prerelease: false
+          name: ${{ github.ref_name }}
+          # This action automatically handles existing releases by updating them
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

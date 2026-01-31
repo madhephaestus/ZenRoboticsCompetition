@@ -1,20 +1,67 @@
 \documentclass{article}
+
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
 \usepackage{enumitem,amssymb}
 \usepackage{lipsum} % for filler text
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-
+\usepackage{geometry}
+\geometry{
+	paperwidth=5.5in,
+	paperheight=8.5in,
+	top=0.25in,
+	bottom=0.5in,
+	left=0.25in,
+	right=0.2in,
+	footskip=20pt  % Reserve space for footer
+}
+\usepackage{qrcode}
 \newlist{todolist}{itemize}{2}
 \setlist[todolist]{label=$\square$}
 \usepackage{easylist}
+\usepackage{fancyhdr}
+
 \fancyfoot{} % clear all footer fields
-\fancyfoot[LE,RO]{\thepage}           % page number in "outer" position of footer line
-\fancyfoot[RE,LO]{Version VERSIONNUMBER} % other info in "inner" position of footer line
 
+\fancyfoot[C]{Zen Robotics Pentathlon vVERSIONNUMBER} % other info in "inner" position of footer line
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{rotating}
+\usepackage{dashbox}
+\usepackage{graphicx}
+\usepackage{eso-pic} % allows background placement
+\pagestyle{fancy}
+\usepackage{sectsty}
+\sectionfont{\centering}
 
+% Set the value
+\newlength{\mylen}
+\setlength{\mylen}{0.25in}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
 \begin{document}
 	
-{\huge \textbf{Zen Robotics Pentatholon}}
+	% Add background image
+	\AddToShipoutPictureBG*{%
+		\AtPageLowerLeft{%
+			\raisebox{7mm}{\includegraphics[width=\paperwidth,height=\dimexpr\paperheight-10mm\relax]{mucha.png}}%
+		}%
+	}
+	
+	\vspace*{\fill}
+	{\centering 
+		\huge \textbf{Zen Robotics}
+		
+		\huge \textbf{Pentatholon}
+		
+		\vspace{1em} % Space between title and subtitle
+		\Large Encouraging Engineers 
+		
+		of the  Future\par % Add your subtitle
+	}
+	\vspace*{\fill}
+
+\pagebreak
 
 \vspace{1cm}
 
@@ -217,4 +264,14 @@ Why Linux as the runtime?
  
 \end{enumerate}
 \vspace{1cm}
+
+  \pagebreak
+  	\begin{enumerate}
+	  \item \textbf{Source Of This Document}
+	  
+	  \qrcode[height=30mm]{https://github.com/madhephaestus/ZenRoboticsCompetition/releases/tag/VERSIONNUMBER}
+		
+
+	\end{enumerate}
+
 \end{document}
